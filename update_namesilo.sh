@@ -61,9 +61,8 @@ get_namesilo() {
     [ $ERR -eq 0 ] && RESPONSE=$(cat $DATFILE) && return 0
     write_log 3 "$CMD Error: '$ERR'"
 
-    # Here I want to use "write_log 17 '$(cat $ERRFILE)'", but I found out that
-    # it won't stop DDNS. So I combine 7 and 16 to keep the output format and
-    # stop DDNS. The following code is also used like this.
+    # Here I want to use "write_log 17 '$(cat $ERRFILE)'", but I found out that it won't stop DDNS. So I
+    # combine 7 and 16 to keep the output format and stop DDNS. The following code is also used like this.
     write_log 7 "$(cat $ERRFILE)"
     write_log 16
 }
@@ -118,6 +117,10 @@ update_namesilo() {
     # Retrieve the record id
     if get_namesilo "dnsListRecords" "domain=$DOMAIN"; then
         retcode=$(printf "%s\n" "$RESPONSE" | _egrep_o "<code>300")
+        # Escape * wildcard
+        if [ "$RRHOST" == "*" ]; then
+            domain="\\"${domain}
+        fi
         if [ "$retcode" ]; then
             local has_value=$(printf "%s\n" "$RESPONSE" |
                 _egrep_o "<host>$domain</host><value>$__IP</value>")
