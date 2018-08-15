@@ -8,7 +8,7 @@ For English version, see [README.md](/README.md).
 
 [NameSilo](https://www.namesilo.com) 并不是一个 DDNS 提供商。
 
-如果你的公共 IP 地址的变化时间太快（大概 5 至 15 分钟以内或者以下，具体情况见[注释](#注释)），那么不建议使用这个脚本，除非你很了解 [DNS 的一些原理和解决方法](https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F)，知道怎么做。
+如果你的公共 IP 地址的变化时间太快（大概 5 至 15 分钟以内或者以下，具体情况见[注释](#注释)），那么不建议使用这个脚本，除非你很了解 [DNS 的一些原理](https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F)和解决方法，知道怎么做。
 
 ## 使用前提
 
@@ -42,24 +42,32 @@ For English version, see [README.md](/README.md).
 
 ```
 option update_script    "/path/to/update_namesilo_cn.sh"    # 该脚本文件的绝对路径
+
 option password         "API_token"                         # 你唯一的 NameSilo API 令牌
+
 option domain           "www.example.com"                   # 需要实时更新的 FQDN
+                                                            # 支持采用 “*” 字符的 DNS 通配符记录
+                                                            # 暂时不支持多个域名
+
 option param_opt        "7207"                              # 记录的存活时间 (TTL，不填则不修改原有设置)
 ```
 
-其他参数请参阅[动态 DNS 客户端配置（英文）](https://openwrt.org/docs/guide-user/base-system/ddns)。
+DNS 通配符记录参阅 [NameSilo DNS 管理器的支持页面（英语）](https://www.namesilo.com/Support/DNS-Manager)。
 
-完整的配置方法请参阅[DDNS 客户端（英文）](https://openwrt.org/docs/guide-user/services/ddns/client)。
+其他参数请参阅[动态 DNS 客户端配置（英语）](https://openwrt.org/docs/guide-user/base-system/ddns)。
 
-也可以在 [UCI](https://openwrt.org/start?id=zh/docs/guide-user/base-system/uci)或者 OpenWrt/LEDE 网页界面进行配置。
+完整的配置方法请参阅[DDNS 客户端（英语）](https://openwrt.org/docs/guide-user/services/ddns/client)。
+
+也可以在 [UCI](https://openwrt.org/start?id=zh/docs/guide-user/base-system/uci) 或者 OpenWrt/LEDE 网页界面进行配置。
 
 ## 待做事项
 
 - 将 DDNS 客户端的其他选项（例如强制更新）整合进来，让 DDNS 客户端更好地控制该脚本的运行
+- 多个域名同时记录
 
 ## 参考链接
 
-- [NameSilo API 参考（英文）](https://www.namesilo.com/api_reference.php)
+- [NameSilo API 参考（英语）](https://www.namesilo.com/api_reference.php)
 - [ACME Shell 脚本](https://acme.sh)，以及 [dns_namesilo.sh](https://github.com/Neilpang/acme.sh/blob/master/dnsapi/dns_namesilo.sh) 文件
 - https://github.com/openwrt/packages/tree/master/net/ddns-scripts
 
@@ -70,7 +78,7 @@ option param_opt        "7207"                              # 记录的存活时
 > We publish DNS changes every 15 minutes. However, your change(s) may take a good deal longer to appear like they are working. This seeming delay is typically due to browser and/or DNS cache. Unfortunately, these issues are completely out of our control. You can read more about these issues on our [DNS Troubleshooting page](https://www.namesilo.com/Support/DNS-Troubleshooting).<br><br>
 > Rest assured that there are absolutely no delays on our end. Your DNS change(s) will be published in no longer than 15 minutes, but cache issues could take up to 48 hours to resolve permanently.
 
-然而在 NameSilo 的 [DNS 疑难解答页面](https://www.namesilo.com/Support/DNS-Troubleshooting)上，NameSilo 又说道：
+然而在 NameSilo 的 [DNS 疑难解答页面（英语）](https://www.namesilo.com/Support/DNS-Troubleshooting)上，NameSilo 又说道：
 
 > ...
 > Next, please remember that we only push DNS changes every 5 minutes. If your DNS change does not appear to be working after 5 minutes, and you have not recently updated the applicable domain(s) to use our name servers, it is very likely the result of browser and/or DNS caching.
