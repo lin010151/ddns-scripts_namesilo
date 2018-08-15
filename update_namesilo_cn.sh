@@ -60,6 +60,7 @@ get_namesilo() {
     ERR=$?
     [ $ERR -eq 0 ] && RESPONSE=$(cat $DATFILE) && return 0
     write_log 3 "$CMD 错误：'$ERR'"
+    
     # 这里本来想用“write_log 17 "$(cat $ERRFILE)"”，结果发现用 17 无法停止掉 DDNS，
     # 只好结合着用 7 和 16 来保持输出格式的同时，停止 DDNS，之后的代码也是这样用的
     write_log 7 "$(cat $ERRFILE)"
@@ -116,6 +117,10 @@ update_namesilo() {
     # 获取记录 ID
     if get_namesilo "dnsListRecords" "domain=$DOMAIN"; then
         retcode=$(printf "%s\n" "$RESPONSE" | _egrep_o "<code>300")
+        # 转义 * 通配符
+        if [ "$RRHOST" == "*" ]; then
+            domain="\\"${domain}
+        fi
         if [ "$retcode" ]; then
             local has_value=$(printf "%s\n" "$RESPONSE" |
                 _egrep_o "<host>$domain</host><value>$__IP</value>")
