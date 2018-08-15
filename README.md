@@ -46,22 +46,30 @@ Activated inside `/etc/config/ddns` by setting
 
 ```
 option update_script    "/path/to/update_namesilo.sh"   # Absolute path to the script
+
 option password         "API_token"                     # Your unique NameSilo API
+
 option domain           "www.example.com"               # The FQDN that needs to update real time
+                                                        # DNS wildcard records via the "*" character are supported
+                                                        # Multiple hostnames not supported for now
+                                                        
 option param_opt        "7207"                          # Record's time-to-live (TTL，would not change if not provided)
 ```
 
+DNS wildcard records see [NameSilo support page for DNS Manager](https://www.namesilo.com/Support/DNS-Manager).
+
 Other options see [Dynamic DNS Client configuration](https://openwrt.org/docs/guide-user/base-system/ddns).
 
-Complete configuration see [DDNS Client](https://openwrt.org/docs/guide-user/services/ddns/client).
+Complete configurations see [DDNS Client](https://openwrt.org/docs/guide-user/services/ddns/client).
 
 You can also configure it using [UCI](https://openwrt.org/start?id=zh/docs/guide-user/base-system/uci) or using OpenWrt/LEDE Web Interface.
 
 ## To-do List
 
 - Merge all the other DDNS client configurations (like force update) into the script to let the DDNS client have a better control.
+- Multiple hostnames support.
 
-## Reference
+## References
 
 - [NameSilo API references](https://www.namesilo.com/api_reference.php)
 - [ACME Shell script](https://acme.sh), and [dns_namesilo.sh](https://github.com/Neilpang/acme.sh/blob/master/dnsapi/dns_namesilo.sh) file
