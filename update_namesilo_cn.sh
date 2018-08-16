@@ -102,6 +102,14 @@ split_domain() {
         p=$i
         i=$(($i + 1))
     done
+
+    # 检查是否是裸域名
+    if _contains "$RESPONSE" "<domain>$domain</domain>"; then
+        DOMAIN="$domain"
+        write_log 7 "Domain $DOMAIN in NameSilo found"
+        return 0 # 裸域名
+    fi
+
     write_log 3 "找不到指定的域名"
     write_log 7 "NameSilo 响应：$RESPONSE"
     write_log 16
