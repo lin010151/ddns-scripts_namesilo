@@ -50,13 +50,13 @@ option update_script    "/path/to/update_namesilo.sh"   # Absolute path to the s
 option password         "API_token"                     # Your unique NameSilo API
 
 option domain           "www.example.com"               # The FQDN that needs to update real time
-                                                        # DNS wildcard records via the "*" character are supported
+                                                        # Wildcard DNS record via the "*" character are supported
                                                         # Multiple hostnames not supported for now
                                                         
 option param_opt        "7207"                          # Record's time-to-live (TTL，would not change if not provided)
 ```
 
-DNS wildcard records see [NameSilo support page for DNS Manager](https://www.namesilo.com/Support/DNS-Manager).
+About how to add [Wildcard DNS records](https://en.wikipedia.org/wiki/Wildcard_DNS_record) see [NameSilo support page for DNS Manager](https://www.namesilo.com/Support/DNS-Manager).
 
 Other options see [Dynamic DNS Client configuration](https://openwrt.org/docs/guide-user/base-system/ddns).
 
