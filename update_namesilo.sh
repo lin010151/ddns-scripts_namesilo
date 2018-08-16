@@ -102,6 +102,14 @@ split_domain() {
         p=$i
         i=$(($i + 1))
     done
+
+    # Check if it is naked domain
+    if _contains "$RESPONSE" "<domain>$domain</domain>"; then
+        DOMAIN="$domain"
+        write_log 7 "Domain $DOMAIN in NameSilo found"
+        return 0 # Naked domain
+    fi
+
     write_log 3 "Unable to find domain specified"
     write_log 7 "Response from NameSilo: $RESPONSE"
     write_log 16
