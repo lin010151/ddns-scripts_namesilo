@@ -46,13 +46,13 @@ option update_script    "/path/to/update_namesilo_cn.sh"    # 该脚本文件的
 option password         "API_token"                         # 你唯一的 NameSilo API 令牌
 
 option domain           "www.example.com"                   # 需要实时更新的 FQDN
-                                                            # 支持采用 “*” 字符的 DNS 通配符记录
+                                                            # 支持采用 “*” 字符的通配符 DNS 记录
                                                             # 暂时不支持多个域名
 
 option param_opt        "7207"                              # 记录的存活时间 (TTL，不填则不修改原有设置)
 ```
 
-DNS 通配符记录参阅 [NameSilo DNS 管理器的支持页面（英语）](https://www.namesilo.com/Support/DNS-Manager)。
+关于如何添加[通配符 DNS 记录（英语）](https://en.wikipedia.org/wiki/Wildcard_DNS_record)请参阅 [NameSilo DNS 管理器的支持页面（英语）](https://www.namesilo.com/Support/DNS-Manager)。
 
 其他参数请参阅[动态 DNS 客户端配置（英语）](https://openwrt.org/docs/guide-user/base-system/ddns)。
 
