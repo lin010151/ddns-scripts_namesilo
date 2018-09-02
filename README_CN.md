@@ -13,8 +13,9 @@ For English version, see [README.md](/README.md).
 ## 使用前提
 
 - 动态公共 IP
-- NameSilo API 令牌，可从 https://www.namesilo.com/account_api.php 获得；
-- 含有 SSL 支持的 GNU Wget，可通过 `opkg install wget` 安装。
+- NameSilo API 令牌，可从 https://www.namesilo.com/account_api.php 获得
+- 含有 SSL 支持的 GNU Wget，可通过 `opkg install wget` 安装
+- （如果使用 HTTPS）系统 CA 证书，可通过 `opkg install ca-certificates` 安装
 
 ## 程序大致流程
 
