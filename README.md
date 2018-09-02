@@ -19,6 +19,7 @@ If your public IP address changes too frequent (like about 5 to 15 minutes or le
 - A dynamic public IP address
 - NameSilo API token, can generate one at https://www.namesilo.com/account_api.php
 - GNU Wget with SSL support, can install it using `opkg install wget` command
+- (If using HTTPS) System CA certificates, can install it using `opkg install ca-certificates` command
 
 ## General Process Flow
 
