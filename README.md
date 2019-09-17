@@ -54,7 +54,7 @@ option domain           "www.example.com"               # The FQDN that needs to
                                                         # Wildcard DNS record via the "*" character are supported
                                                         # Multiple hostnames not supported for now
                                                         
-option param_opt        "7207"                          # Record's time-to-live (TTL，would not change if not provided)
+option param_opt        "7207"                          # Record's time-to-live (TTL，default is 7207 if not provided)
 ```
 
 About how to add [Wildcard DNS records](https://en.wikipedia.org/wiki/Wildcard_DNS_record) see [NameSilo support page for DNS Manager](https://www.namesilo.com/Support/DNS-Manager).
