@@ -50,7 +50,7 @@ option domain           "www.example.com"                   # 需要实时更新
                                                             # 支持采用 “*” 字符的通配符 DNS 记录
                                                             # 暂时不支持多个域名
 
-option param_opt        "7207"                              # 记录的存活时间 (TTL，不填则不修改原有设置)
+option param_opt        "7207"                              # 记录的存活时间 (TTL，不填则默认设为 7207)
 ```
 
 关于如何添加[通配符 DNS 记录（英语）](https://en.wikipedia.org/wiki/Wildcard_DNS_record)请参阅 [NameSilo DNS 管理器的支持页面（英语）](https://www.namesilo.com/Support/DNS-Manager)。
