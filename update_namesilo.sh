@@ -104,7 +104,7 @@ split_domain() {
     done
 
     # Check if it is naked domain
-    if _contains "$RESPONSE" "<domain>$domain</domain>"; then
+    if _contains "$RESPONSE" "<domain.*>$domain</domain>"; then
         DOMAIN="$domain"
         write_log 7 "Domain $DOMAIN in NameSilo found"
         return 0 # Naked domain
