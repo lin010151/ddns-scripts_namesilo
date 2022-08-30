@@ -104,7 +104,7 @@ split_domain() {
     done
 
     # 检查是否是裸域名
-    if _contains "$RESPONSE" "<domain>$domain</domain>"; then
+    if _contains "$RESPONSE" "<domain.*>$domain</domain>"; then
         DOMAIN="$domain"
         write_log 7 "Domain $DOMAIN in NameSilo found"
         return 0 # 裸域名
